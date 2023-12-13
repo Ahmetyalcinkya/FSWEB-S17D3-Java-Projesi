@@ -32,11 +32,13 @@ public class KoalaController {
     @PostMapping("/")
     public Koala addKoala(@RequestBody Koala koala){
         KoalaValidation.koalaExist(koalas, koala.getId());
+        KoalaValidation.sleepHourIsNotValid(koala.getSleepHour());
         return koalas.put(koala.getId(), koala);
     }
     @PutMapping("/{id}")
-    public Koala updateKoala(@PathVariable int id, Koala koala){
+    public Koala updateKoala(@PathVariable int id, @RequestBody Koala koala){
         KoalaValidation.koalaNotExist(koalas, koala.getId());
+        KoalaValidation.sleepHourIsNotValid(koala.getSleepHour());
         koala.setId(id);
         koalas.put(id, koala);
         return koala;

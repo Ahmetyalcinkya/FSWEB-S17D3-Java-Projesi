@@ -21,9 +21,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(kangarooErrorResponse,kangarooException.getStatus());
     }
     @ExceptionHandler
-    public ResponseEntity<KoalaErrorResponse> handleException(Exception exception){
-        KoalaErrorResponse koalaErrorResponse = new KoalaErrorResponse(HttpStatus.BAD_REQUEST.value(),
+    public ResponseEntity<ZooErrorResponse> handleException(Exception exception){
+        ZooErrorResponse zooErrorResponse = new ZooErrorResponse(HttpStatus.BAD_REQUEST.value(),
                 exception.getMessage(), System.currentTimeMillis());
-        return new ResponseEntity<>(koalaErrorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(zooErrorResponse, HttpStatus.BAD_REQUEST);
     }
 }

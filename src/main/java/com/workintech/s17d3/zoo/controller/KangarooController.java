@@ -36,7 +36,7 @@ public class KangarooController {
         return kangaroos.put(kangaroo.getId(), kangaroo);
     }
     @PutMapping("/{id}")
-    public Kangaroo updateKangaroo(@PathVariable int id, Kangaroo kangaroo){
+    public Kangaroo updateKangaroo(@PathVariable int id,@RequestBody Kangaroo kangaroo){
         KangarooValidation.kangarooIsNotExist(kangaroos, kangaroo.getId());
             kangaroo.setId(id);
             kangaroos.put(id, kangaroo);
